@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import { expressjwt } from "express-jwt";
 import jwt from "jsonwebtoken";
 import 'dotenv/config';
-import { createUser, getUserByEmail } from "./db/users.js";
+import { createUser, getUserByEmail } from "./users.controller.js";
 
 export const authMiddleware = expressjwt({
     algorithms: ["HS256"],
