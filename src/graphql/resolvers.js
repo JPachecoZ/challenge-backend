@@ -8,18 +8,18 @@ export const resolvers = {
     },
 
     Mutation: {
-        createUser: (_root, { input }, { auth }) => {
+        createUser: (_root, { name, email }, { auth }) => {
                 if (!isAuthenticated(auth)){
                     throw unauthorizedError("Missing Authentication")
                 }
-                return createUser(input)
+                return createUser({name, email})
             },
             
-        updateUser: async(_root, { input }, { auth }) => {
+        updateUser: async(_root, { id, name, email }, { auth }) => {
                 if (!isAuthenticated(auth)){
                     throw unauthorizedError("Missing Authentication")
                 }
-                const user = await updateUser(input)
+                const user = await updateUser({id, name, email})
                 if (!user) {
                     throw new Error("User not found")
                 }
