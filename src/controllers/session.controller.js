@@ -27,7 +27,7 @@ export async function handleLogin(req, res) {
         return res.status(401).json({ error: "Invalid email or password" });
       }
   
-      const claims = { sub: user.id, email: user.email };
+      const claims = { sub: user.id, email: user.email, name: user.name };
       const token = jwt.sign(claims, process.env.JWT_SECRET, { expiresIn: "1h" });
   
       return res.status(200).json({ token });

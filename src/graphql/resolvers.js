@@ -16,6 +16,7 @@ export const resolvers = {
             },
             
         updateUser: async(_root, { id, name, email }, { auth }) => {
+                console.log('attempting to update user...')
                 if (!isAuthenticated(auth)){
                     throw unauthorizedError("Missing Authentication")
                 }
